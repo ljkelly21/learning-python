@@ -1,0 +1,18 @@
+# scans email text file to calculate average spam confidence
+fname = input("Enter file name: ")
+try:
+    fh = open(fname)
+except:
+    print("file not found")
+    close()
+added = 0
+count = 0
+average = 0
+for line in fh:
+    if not line.startswith("X-DSPAM-Confidence:") : continue
+    index = line.find('0.')
+    number = float(line[index: index + 7])
+    added = added + number
+    count = count + 1
+average = added/count
+print("Average spam confidence: " + str(average))
