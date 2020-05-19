@@ -1,4 +1,4 @@
-# scans email text file to calculate average spam confidence
+#1. scans email text file to calculate average spam confidence
 fname = input("Enter file name: ")
 try:
     fh = open(fname)
@@ -16,3 +16,18 @@ for line in fh:
     count = count + 1
 average = added/count
 print("Average spam confidence: " + str(average))
+
+
+
+
+#2. tells number of lines in a text file
+fname = input('enter file name: ')
+count = 0
+try:
+    fh = open(fname)
+except:
+    print('file not found')
+    exit()
+for lines in fh:
+    count = count + 1
+print("There were " + str(count) + " lines in " + fname  + ".")
