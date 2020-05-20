@@ -68,3 +68,27 @@ for k, v in di.items():
         bigword = k
 print("The most frequent word was " + str(bigword) + ", which appeared "  + str(numberbigword) + " times.")
 
+
+#5. similar to above, but scans email text file to find email address that appears most
+name = input("Enter file:")
+if len(name) < 1 : name = "mbox-short.txt"
+handle = open(name)
+di = dict()
+for line in handle:
+    if not line.startswith("From "):
+        continue
+    else:
+        line = line.rstrip()
+        words = line.split()
+        for w in words:
+            if '@' in w:
+                di[w] = di.get(w, 0) + 1
+            else:
+                continue
+bigemail = None
+numberbigemail = -1
+for k, v in di.items():
+    if v > numberbigemail:
+        numberbigemail = v
+        bigemail = k
+print(bigemail, numberbigemail)
